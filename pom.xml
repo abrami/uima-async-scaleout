@@ -59,21 +59,21 @@
   </scm>
 
   <properties>
-    <jiraVersion>12342746</jiraVersion> <!-- for 2.10.2AS -->  
+    <jiraVersion>12342746</jiraVersion> <!-- for 2.10.2AS -->
     <uimaScmProject>${project.artifactId}</uimaScmProject>
-    <assemblyFinalName>uima-as-${project.version}</assemblyFinalName> 
-    <additionalparam>-Xdoclint:none</additionalparam> 
+    <assemblyFinalName>uima-as-${project.version}</assemblyFinalName>
+    <additionalparam>-Xdoclint:none</additionalparam>
   </properties>
-  
+
   <!-- override pom setting in the build project. JIRA 5.1 needs different URL -->
   <issueManagement>
     <system>Jira</system>
     <url>https://issues.apache.org/jira/browse/UIMA</url>
   </issueManagement>
-  
-  
 
-    
+
+
+
   <!-- dependencies used during assembly -->
 	<dependencies>
     <!-- uima-as -->
@@ -112,7 +112,7 @@
       <artifactId>uimaj-as-osgi-runtime</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.apache.uima</groupId>
       <artifactId>uimaj-test-util</artifactId>
@@ -133,7 +133,7 @@
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-jaas</artifactId>
     </dependency>
-  
+
     <!-- dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-web</artifactId>
@@ -152,17 +152,17 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-spring</artifactId>
-    </dependency> 
+    </dependency>
 
     <!--dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-optional</artifactId>
-      <exclusions> 
-			 <exclusion>  
+      <exclusions>
+			 <exclusion>
                  <groupId>axis</groupId>
                  <artifactId>axis</artifactId>
              </exclusion>
-      </exclusions> 
+      </exclusions>
     </dependency-->
 
     <dependency>
@@ -189,9 +189,9 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
      </dependency>
-        
-       
-    
+
+
+
      <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>jcl-over-slf4j</artifactId>
@@ -201,7 +201,7 @@
        <groupId>org.slf4j</groupId>
        <artifactId>slf4j-api</artifactId>
       </dependency>
-    
+
 	</dependencies>
 
 
@@ -248,13 +248,13 @@
           </execution>
         </executions>
       </plugin>
-      		
-		
+
+
       <!-- UIMA-AS includes the base UIMA binary distribution
            We get an unzipped version of that and unpack it into
            target/uimaj -->
 
-      <!--  must come before the unpack -->      
+      <!--  must come before the unpack -->
       <plugin>
         <groupId>org.apache.uima</groupId>
         <artifactId>uima-build-helper-maven-plugin</artifactId>
@@ -267,15 +267,15 @@
               <artifactId>uimaj</artifactId>
             </configuration>
           </execution>
-        </executions> 
+        </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <!-- use the dependency:unpack goal to unpack the 
+            <!-- use the dependency:unpack goal to unpack the
                  base binary uimaj sdk distribution -->
             <id>unpack Uimaj Bin</id>
             <phase>prepare-package</phase>
@@ -294,7 +294,7 @@
               </artifactItems>
             </configuration>
           </execution>
-          
+
           <execution>
 	  <!-- use the dependency:unpack goal to unpack the AMQ binary release -->
 	  <id>unpack-activemq-distro-win</id>
@@ -337,12 +337,12 @@
 		</artifactItems>
 	     </configuration>
 	  </execution>
-        </executions>        
+        </executions>
       </plugin>
-      
-      <!-- This java doc config is for building the ones distributed with the bin packaging, and also 
+
+      <!-- This java doc config is for building the ones distributed with the bin packaging, and also
            posted on our website.
-       -->     
+       -->
       <plugin>
  	  <artifactId>maven-javadoc-plugin</artifactId>
           <!-- >version>2.9.1</version-->
@@ -382,7 +382,7 @@
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/client/UimaAsynchronousEngine.java
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/client/UimaAsBaseCallbackListener.java
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/client/UimaASStatusCallbackListener.java
-                          ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/client/UimaASProcessStatus.java                                                                                     
+                          ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/client/UimaASProcessStatus.java
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/error/ErrorResult.java
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/error/ErrorResultComponentPath.java
                           ${basedir}/uimaj-as-core/src/main/java/org/apache/uima/aae/error/ErrorResultTDs.java
@@ -402,7 +402,7 @@
 	   </executions>
 	</plugin>
 
-		
+
 	<plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>2.5</version>
@@ -416,20 +416,20 @@
             <configuration>
             <overwrite>true</overwrite>
               <outputDirectory>target/maven-shared-archive-resources/META-INF</outputDirectory>
-              <resources>          
+              <resources>
                 <resource>
                   <directory>.</directory>
 				  <includes>
                      <include>LICENSE</include>
                      <include>NOTICE</include>
-                  </includes>                  
+                  </includes>
                 </resource>
-              </resources>              
-            </configuration>            
+              </resources>
+            </configuration>
           </execution>
         </executions>
-      </plugin>	
- 
+      </plugin>
+
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
@@ -438,24 +438,24 @@
             <execution>
               <id>default-cli</id>
               <goals><goal>jira-report</goal></goals>
-              
-              <phase>generate-resources</phase>        
+
+              <phase>generate-resources</phase>
               <configuration>
                 <useJql>true</useJql>
                 <fixVersionIds>${jiraVersion}</fixVersionIds>
                 <component>Async Scaleout</component>
                 <columnNames>Type,Key,Status,Summary</columnNames>
-                <resolution>Fixed</resolution>
-                <status>Closed,Resolved</status>
+<!--                <resolution>Fixed</resolution>-->
+<!--                <status>Closed,Resolved</status>-->
                 <sortColumnNames>Type, Status, Key DESC</sortColumnNames>
                 <outputDirectory>${basedir}/issuesFixed/</outputDirectory>
-                <maxEntries>1000</maxEntries> 
+                <maxEntries>1000</maxEntries>
               </configuration>
             </execution>
           </executions>
         </plugin>
       	<plugin>
-	        <!-- run Release Audit Tool (RAT) on src and bin distrs -->       
+	        <!-- run Release Audit Tool (RAT) on src and bin distrs -->
         	<groupId>org.apache.rat</groupId>
         	<artifactId>apache-rat-plugin</artifactId>
         	<executions>
@@ -467,12 +467,12 @@
 
             		<configuration>
               			<excludes combine.children="append">
-              			    
+
                 			<exclude>src/test/resources/deploy/expected/*.*</exclude> <!-- test data -->
                 			<exclude>src/test/resources/deploy/expected/envVar/*.*</exclude> <!-- test data -->
                 			<exclude>src/main/examples/run_configuration/*.launch</exclude> <!-- eclipse launch configurations -->
                 			<exclude>LicNoticeAnalysisActiveMQ.txt</exclude>
-                			             
+
 
               			    <!--  workaround https://issues.apache.org/jira/browse/RAT-97 -->
               			    <exclude>aggregate-uima-as/**</exclude>
@@ -489,17 +489,17 @@
               			    <exclude>uimaj-ep-deployeditor/**</exclude>
               			    <exclude>uimaj-ep-runtime-deployeditor/**</exclude>
               			    <exclude>uima-as-docbooks/**</exclude>
-              			    
+
               			</excludes>
             		</configuration>
           		</execution>
         	</executions>
       	</plugin>
-      	
-      	
+
+
 
 	    </plugins>
-	  <!-- /pluginManagement-->	
+	  <!-- /pluginManagement-->
 	</build>
 
 
@@ -541,13 +541,13 @@
                   <sortColumnNames>Type, Key, Status</sortColumnNames>
                 </configuration>
               </execution>
-            </executions>  
+            </executions>
           </plugin>
-        
+
         </plugins>
       </build>
     </profile>
-    
+
   </profiles>
 
   <modules>
